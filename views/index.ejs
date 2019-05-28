@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="ja">
+	<head>
+		<meta http-equiv="content-type"
+			content="text/html"; charset="utf-8">
+		<link type="text/css" href="./style.css" rel="stylesheet">
+		<title><%=title %></title>
+	</head>
+	<body>
+		<header>
+			<h1><%=title %></h1>
+			<p><%-content %></p>
+		</header>
+		<div role="main">
+		</div>
+	</body>
 </html>

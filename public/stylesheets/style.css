@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+h1 {
+	font-size: 60pt;
+	color: #eee;
+	text-align: right;
+	margin: 0px;
+}
+.error{
+	color: red;
+}
