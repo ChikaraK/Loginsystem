@@ -4,11 +4,12 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if(req.session.email == undefined){
-		var data = {
-			title:'Not logged in',
-			content:'未ログイン',
-			logout:''
-		}
+		var data ={
+			title:'Users/login(ログイン)',
+			form:{email:'',password:''},
+			content:'メールアドレスとパスワードを入力してください。'
+			}
+		res.render('users/login',data);
 	}else{
 		var data ={
 			title:'Logged in',
@@ -16,8 +17,9 @@ router.get('/', function(req, res, next) {
 			logout:"<form method='get' action='/users/logout'>" +
 					"<input type='submit' value='ログアウト'></form>"
 		}
+		res.render('index', data);
 	}
-	res.render('index', data);
+
 });
 
 

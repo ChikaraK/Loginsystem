@@ -4,6 +4,7 @@ var mysql = require('mysql');
 //squelizeのモデル読み込み
 var models = require("../models");
 var User = models.User;
+
 /* GET users listing. */
 router.get('/add',(req, res, next) => {
   var data={
@@ -51,12 +52,16 @@ router.post('/add',(req,res,next)=>{
 });
 
 router.get('/',(req,res,next)=>{
-	var data ={
-		title:'Users/login(ログイン)',
-		form:{email:'',password:''},
-		content:'メールアドレスとパスワードを入力してください。'
+	if(req.session.email == undefined){
+		var data ={
+			title:'Users/login(ログイン)',
+			form:{email:'',password:''},
+			content:'メールアドレスとパスワードを入力してください。'
+		}
+		res.render('users/login',data);
+	}else{
+		res.redirect('/');
 	}
-	res.render('users/login',data);
 });
 
 router.post('/',(req,res,next) => {
