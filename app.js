@@ -26,12 +26,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(validator());
 
+// セッション設定
 var session_opt = {
 	secret: 'keyboard cat',
 	resave: false,
 	saveUninitialized: false,
 	cookie: {maxAge:60 * 60 * 1000}
 };
+
 app.use(session(session_opt));
 
 //ルート関係

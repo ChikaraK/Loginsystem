@@ -96,15 +96,28 @@ router.post('/',(req,res,next) => {
 					}
 					response.render('users/login',data);
 				}else{
-					req.session.login = user.attributes;
+					req.session.email = ml;
 					var data ={
 						title:'Logged in',
-						content:'ようこそ' + ml +'さん。'
+						content:'ようこそ' + req.session.email +'さん。',
+						logout:"<form method='get' action='/users/logout'>" +
+						"<input type='submit' value='ログアウト'></form>"
 					}
-					response.render('./index.ejs',data);
+					response.render('index',data);
 				}
 			});
 		}
 	});
 });
+
+router.get('/logout',(req,res,next)=>{
+	req.session.destroy();
+	var data ={
+		title:'Users/login(ログイン)',
+		form:{email:'',password:''},
+		content:'メールアドレスとパスワードを入力してください。'
+	}
+	res.render('users/login',data);
+});
+
 module.exports = router;
